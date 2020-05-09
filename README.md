@@ -9,9 +9,9 @@ This is a fork of the [Enviro+ MQTT library](https://github.com/hotplot/enviropl
 1) Set up your RPi as you normally would.
 2) Connect the Enviro board, and the PMS5003 sensor if you are using one.
 3) Install the Enviro library by following the instructions at https://github.com/pimoroni/enviroplus-python/ (make sure the library is installed for Python 3)
-4) Clone this repository to `/usr/src/enviroplus-mqtt`:
+4) Clone this repository to `/usr/src/enviro-mqtt`:
 
-       sudo git clone https://github.com/Sixfifty/enviroplus-mqtt /usr/src/enviroplus-mqtt
+       sudo git clone https://github.com/Sixfifty/enviro-mqtt /usr/src/enviro-mqtt
 
 5) Add a new file at `/etc/systemd/system/envlogger.service` with the following content:
 
@@ -20,8 +20,8 @@ This is a fork of the [Enviro+ MQTT library](https://github.com/hotplot/enviropl
        After=network.target
    
        [Service]
-       ExecStart=/usr/bin/python3 /usr/src/enviroplus-mqtt/src/main.py <arguments>
-       WorkingDirectory=/usr/src/enviroplus-mqtt
+       ExecStart=/usr/bin/python3 /usr/src/enviro-mqtt/src/main.py <arguments>
+       WorkingDirectory=/usr/src/enviro-mqtt
        StandardOutput=inherit
        StandardError=inherit
        Restart=always
@@ -62,8 +62,6 @@ This is a fork of the [Enviro+ MQTT library](https://github.com/hotplot/enviropl
         --interval INTERVAL   the duration in seconds between updates
         --delay DELAY         the duration in seconds to allow the sensors to
                             stabilise before starting to publish readings
-        --use-pms5003         if set, PM readings will be taken from the PMS5003
-                            sensor
         --help                print this help message and exit
 
 ## Published Topics
