@@ -1,20 +1,22 @@
-# Enviro+ MQTT Logger
+# Enviro MQTT Logger
 
-`enviroplus-mqtt` is a Python service that publishes environmental data from an [Enviro+](https://shop.pimoroni.com/products/enviro-plus) via MQTT.
+`enviro-mqtt` is a Python service that publishes environmental data from an [Enviro](https://shop.pimoroni.com/products/enviro-plus) via MQTT.
+
+This is a fork of the [Enviro+ MQTT library](https://github.com/hotplot/enviroplus-mqtt) that removes the extra sensors the Enviro hat does not support.
 
 ## Setting Up Your Device
 
 1) Set up your RPi as you normally would.
-2) Connect the Enviro+ board, and the PMS5003 sensor if you are using one.
-3) Install the Enviro+ library by following the instructions at https://github.com/pimoroni/enviroplus-python/ (make sure the library is installed for Python 3)
+2) Connect the Enviro board, and the PMS5003 sensor if you are using one.
+3) Install the Enviro library by following the instructions at https://github.com/pimoroni/enviroplus-python/ (make sure the library is installed for Python 3)
 4) Clone this repository to `/usr/src/enviroplus-mqtt`:
 
-       sudo git clone https://github.com/hotplot/enviroplus-mqtt /usr/src/enviroplus-mqtt
+       sudo git clone https://github.com/Sixfifty/enviroplus-mqtt /usr/src/enviroplus-mqtt
 
 5) Add a new file at `/etc/systemd/system/envlogger.service` with the following content:
 
        [Unit]
-       Description=Enviro+ MQTT Logger
+       Description=Enviro MQTT Logger
        After=network.target
    
        [Service]
@@ -73,9 +75,3 @@ Readings will be published to the following topics:
 - `<prefix>/temperature`
 - `<prefix>/pressure`
 - `<prefix>/humidity`
-- `<prefix>/gas/oxidising`
-- `<prefix>/gas/reducing`
-- `<prefix>/gas/nh3`
-- `<prefix>/particulate/1.0`
-- `<prefix>/particulate/2.5`
-- `<prefix>/particulate/10.0`
